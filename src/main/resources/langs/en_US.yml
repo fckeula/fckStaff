@@ -1,0 +1,110 @@
+general:
+  usage: "<red>Usage: /fckstaff reload"
+  reloaded: "<green>Config and language reloaded."
+
+staffmode:
+  enabled: "<green>You have enabled staff mode."
+  disabled: "<yellow>You have disabled staff mode."
+  player-only: "<red>Only players can use this command."
+
+freeze:
+  usage: "<red>Usage: /freeze <player>"
+  player-not-found: "<red>That player is not online."
+  no-permission: "<red>You don't have permission to freeze players."
+  frozen-staff: "<green>You have frozen <player>."
+  unfrozen-staff: "<green>You have unfrozen <player>."
+  frozen-target: "<red>You have been frozen by a staff member."
+  unfrozen-target: "<green>You have been unfrozen."
+  cant-move: "<red>You are frozen, you cannot move."
+  cant-command: "<red>You cannot use commands while frozen."
+  cant-interact: "<red>You cannot interact with anything while frozen."
+  title-frozen: "<red><bold>YOU HAVE BEEN FROZEN"
+  title-still-frozen: "<red><bold>YOU ARE FROZEN"
+  title-unfrozen: "<green><bold>YOU HAVE BEEN UNFROZEN"
+  chat-reminder:
+    - " "
+    - "<strikethrough><gray>------------------------------------------------------"
+    - "<red><bold>            YOU HAVE BEEN FROZEN BY STAFF"
+    - "<gray>       Join our Discord: <aqua><underlined>discord.example.com"
+    - "<strikethrough><gray>------------------------------------------------------"
+    - " "
+
+freezechat:
+  usage: "<red>Usage: /freezechat <player> <message>"
+  not-frozen: "<red>That player is not frozen."
+  format-staff-to-player: "<dark_aqua>[FreezeChat] <aqua>Staff → <player>: <white><message>"
+  format-player-to-staff: "<dark_aqua>[FreezeChat] <aqua><player> → Staff: <white><message>"
+
+staffchat:
+  enabled: "<green>Staff chat enabled. All your messages will go to staff chat."
+  disabled: "<yellow>Staff chat disabled."
+  format: "<dark_aqua>[Staff] <aqua><player>: <white><message>"
+
+vanish:
+  enabled: "<green>You are now invisible to players."
+  disabled: "<yellow>You are no longer invisible."
+  requires-staffmode: "<red>You can only use /vanish while in staff mode."
+
+fly:
+  enabled: "<green>Flight enabled."
+  disabled: "<yellow>Flight disabled."
+
+actionbar:
+  format: "<green>Staff Mode <staffmode_status> <dark_gray>| <yellow>Vanish <vanish_status> <dark_gray>| <aqua>Staff Chat <staffchat_status>"
+  active: "<green>✔"
+  inactive: "<red>✘"
+
+tools:
+  random-tp-none: "<red>No players available to teleport to."
+  random-tp-success: "<green>Teleported to <player>."
+  staff-online: "<aqua>Staff online: <list>"
+
+items:
+  freeze-stick:
+    name: "<aqua>Freeze Stick"
+    lore:
+      - "<gray>Right click a player"
+      - "<gray>to freeze or unfreeze them."
+  random-tp:
+    name: "<aqua>Random Teleport"
+    lore:
+      - "<gray>Right click to teleport"
+      - "<gray>to a random player."
+  inspector:
+    name: "<aqua>Inventory Inspector"
+    lore:
+      - "<gray>Right click a player"
+      - "<gray>to view their inventory."
+  vanish-toggle:
+    name: "<aqua>Toggle Invisibility"
+    lore:
+      - "<gray>Right click to toggle"
+      - "<gray>your invisibility."
+  fly-toggle:
+    name: "<aqua>Toggle Flight"
+    lore:
+      - "<gray>Right click to toggle"
+      - "<gray>flight on or off."
+  menu:
+    name: "<aqua>Staff Menu"
+    lore:
+      - "<gray>Right click to open"
+      - "<gray>the tools menu."
+
+menu:
+  title: "<dark_aqua>Staff Menu"
+  staff-list:
+    name: "<aqua>Players in Staff Mode"
+    lore:
+      - "<gray>Click to see who is"
+      - "<gray>currently in staff mode."
+  random-tp:
+    name: "<aqua>Random Teleport"
+    lore:
+      - "<gray>Click to go to a"
+      - "<gray>random player on the server."
+  leave:
+    name: "<aqua>Leave Staff Mode"
+    lore:
+      - "<gray>Click to disable"
+      - "<gray>staff mode."

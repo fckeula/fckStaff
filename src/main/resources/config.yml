@@ -1,0 +1,147 @@
+# fckStaff - general configuration
+
+# Language to use. The file langs/<language>.yml must exist.
+language: en_US
+
+# -----------------------------------------------------------------------------
+# Where to persist staff mode state across reconnects/restarts.
+#
+#   type: sqlite  -> local file (staffdata.db), zero setup, good default
+#         mysql   -> remote MySQL server
+#         mariadb -> remote MariaDB server
+#         yaml    -> local file (staffdata.yml), simplest option
+#
+# The mysql section below is used for BOTH "mysql" and "mariadb" (same fields).
+# Changing storage.type requires a server restart to take effect.
+# -----------------------------------------------------------------------------
+storage:
+  type: sqlite
+
+  mysql:
+    host: localhost
+    port: 3306
+    database: fckstaff
+    username: root
+    password: ""
+    # Extra JDBC connection parameters (advanced).
+    parameters: "useSSL=false&autoReconnect=true&characterEncoding=utf8"
+
+# -----------------------------------------------------------------------------
+# Third-party addons (see plugins/fckStaff/addons/). Each addon is a separate
+# jar with its own addon.yml, loaded automatically on startup - not by
+# /fckstaff reload. Set to false to skip loading the addons folder entirely.
+# -----------------------------------------------------------------------------
+addons:
+  enabled: false
+
+# -----------------------------------------------------------------------------
+# Command aliases. Add or remove entries freely - the main command name itself
+# (staffmode, freeze, etc.) always works and doesn't need to be listed here.
+# Changes apply on the next server restart (aliases are registered on enable).
+# -----------------------------------------------------------------------------
+commands:
+  staffmode:
+    aliases: ["sm", "staff"]
+  freeze:
+    aliases: ["f"]
+  freezechat:
+    aliases: ["fc"]
+  staffchat:
+    aliases: ["sc"]
+  vanish:
+    aliases: ["v"]
+  fckstaff:
+    aliases: ["zs"]
+
+vanish:
+  # If true, /vanish can only be used while in staff mode.
+  # Players with the "fckstaff.vanish.bypass" permission can skip this restriction.
+  require-staffmode: true
+
+actionbar:
+  # How often (in ticks, 20 ticks = 1 second) the action bar refreshes while in staff mode.
+  interval-ticks: 10
+
+freeze:
+  # Command executed from console if a frozen player disconnects (anti-evasion measure).
+  # Placeholders: %player% -> player name, %uuid% -> player UUID
+  # Leave empty ("") to disable this punishment.
+  disconnect-command: "ban %player% Left the server while frozen by staff"
+
+  # How often (in seconds) the "you are frozen" title refreshes on screen while frozen.
+  title-refresh-interval-seconds: 3
+
+  # How often (in seconds) the reminder banner is sent in chat while frozen.
+  chat-reminder-interval-seconds: 20
+
+# -----------------------------------------------------------------------------
+# Staff kit items (given to the hotbar when staff mode is enabled).
+#
+#   material          -> any valid Bukkit Material name (case-insensitive)
+#   slot              -> hotbar slot, 0-8
+#   amount            -> stack size given (1-64)
+#   glow              -> true/false, adds an enchant-like glint to the item
+#   custom-model-data -> optional integer for resource packs, remove the line to disable
+#
+# Display name and lore are NOT set here: they live in langs/<language>.yml
+# under the same key (e.g. items.freeze-stick.name / items.freeze-stick.lore),
+# so appearance/behavior and translation stay independent of each other.
+# -----------------------------------------------------------------------------
+items:
+  freeze-stick:
+    material: BLAZE_ROD
+    slot: 0
+    amount: 1
+    glow: false
+  random-tp:
+    material: COMPASS
+    slot: 1
+    amount: 1
+    glow: false
+  inspector:
+    material: PLAYER_HEAD
+    slot: 2
+    amount: 1
+    glow: false
+  vanish-toggle:
+    material: GLASS
+    slot: 3
+    amount: 1
+    glow: false
+  fly-toggle:
+    material: FEATHER
+    slot: 5
+    amount: 1
+    glow: false
+  menu:
+    material: NETHER_STAR
+    slot: 4
+    amount: 1
+    glow: true
+
+# -----------------------------------------------------------------------------
+# Staff menu GUI (opened with the "menu" item above).
+#
+#   size -> inventory size, must be a multiple of 9 between 9 and 54
+#
+# Each button below uses the same material/slot/amount/glow/custom-model-data
+# options as the kit items, and its name/lore lives in langs/<language>.yml
+# under menu.<button>.name / menu.<button>.lore.
+# -----------------------------------------------------------------------------
+menu:
+  size: 27
+  staff-list:
+    material: ENDER_EYE
+    slot: 11
+    amount: 1
+    glow: false
+  random-tp:
+    material: COMPASS
+    slot: 13
+    amount: 1
+    glow: false
+  leave:
+    material: BARRIER
+    slot: 15
+    amount: 1
+    glow: false

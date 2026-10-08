@@ -1,0 +1,45 @@
+name: fckStaff
+version: '${version}'
+
+main: dev.fckeula.fckStaff.FckStaff
+api-version: '26.2'
+load: POSTWORLD
+
+libraries:
+  - org.xerial:sqlite-jdbc:3.47.1.0
+  - com.mysql:mysql-connector-j:9.7.0
+  - org.mariadb.jdbc:mariadb-java-client:3.5.9
+  - com.zaxxer:HikariCP:7.0.2
+
+dependencies:
+  server:
+    PlaceholderAPI:
+      load: BEFORE
+      required: false
+      join-classpath: true
+
+permissions:
+  fckstaff.admin:
+    description: Allows using /fckstaff reload and other admin commands
+    default: op
+  fckstaff.staffmode:
+    description: Allows enabling/disabling staff mode
+    default: op
+  fckstaff.freeze:
+    description: Allows freezing and unfreezing players
+    default: op
+  fckstaff.freezechat:
+    description: Allows using /freezechat and viewing the freeze chat channel
+    default: op
+  fckstaff.staffchat:
+    description: Allows using and viewing staff chat
+    default: op
+  fckstaff.vanish:
+    description: Allows using the /vanish command
+    default: op
+  fckstaff.vanish.bypass:
+    description: Allows using /vanish outside staff mode even if restricted in the config
+    default: op
+  fckstaff.see:
+    description: Allows seeing players who are vanished (staff mode or /vanish)
+    default: op
